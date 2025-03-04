@@ -52,15 +52,15 @@ class Circle {
 function generateValidCircle(canvas, minRadius, maxRadius, text, color, backcolor) {
   let attempts = 0;
   while (attempts < 100) { // Previene bucles infinitos
-    let randomRadius = Math.floor(Math.random() * (maxRadius - minRadius) + minRadius);
-    let randomX = Math.random() * (canvas.width - 2 * randomRadius) + randomRadius;
-    let randomY = Math.random() * (canvas.height - 2 * randomRadius) + randomRadius;
+    let randomRadius = Math.floor(Math.random() * (maxRadius - minRadius) + minRadius); // Genera un radio entre minRadius y maxRadius
+    let randomX = Math.random() * (canvas.width - 2 * randomRadius) + randomRadius; // Genera una coordenada x entre randomRadius y canvas.width - randomRadius
+    let randomY = Math.random() * (canvas.height - 2 * randomRadius) + randomRadius; // Genera una coordenada y entre randomRadius y canvas.height - randomRadius
 
     if (
       randomX - randomRadius >= 0 &&
       randomX + randomRadius <= canvas.width &&
       randomY - randomRadius >= 0 &&
-      randomY + randomRadius <= canvas.height
+      randomY + randomRadius <= canvas.height // Verifica que el círculo no se salga de la pantalla
     ) {
       return new Circle(randomX, randomY, randomRadius, color, text, backcolor);
     }
